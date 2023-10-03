@@ -22,15 +22,6 @@ while running:
             pygame.quit()
             print("Fermeture du jeu")
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_d:
-                print("Input : D")
-                game.player.move_right()
-            elif event.key == pygame.K_a:
-                print("Input : A")
-                game.player.move_left()
-            elif event.key == pygame.K_LEFT:
-                print("Input : LEFT")
-                game.player.move_left()
-            elif event.key == pygame.K_RIGHT:
-                print("Input : RIGHT")
-                game.player.move_right()
+            game.pressed[event.key] = True
+        elif event.type == pygame.KEYUP:
+            game.pressed[event.key] = False
