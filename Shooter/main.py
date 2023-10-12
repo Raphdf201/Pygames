@@ -15,6 +15,7 @@ running = True
 while running:
     screen.blit(background, (0, -200))
     screen.blit(game.player.sprite, game.player.rect)
+    game.player.all_projectiles.draw(screen)
     if game.pressed.get(pygame.K_d) and game.player.rect.x < 900:
         game.player.move_right()
     elif game.pressed.get(pygame.K_RIGHT) and game.player.rect.x < 900:
@@ -31,5 +32,7 @@ while running:
             print("Fermeture du jeu")
         elif event.type == pygame.KEYDOWN:
             game.pressed[event.key] = True
+            if event.key == pygame.K_SPACE:
+                game.player.launch_projectile()
         elif event.type == pygame.KEYUP:
             game.pressed[event.key] = False
